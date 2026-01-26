@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Introduction to HTML and CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #02B3E4;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #02B3E4;
+        }
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #02B3E4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Introduction to HTML and CSS</h1>
+</header>
+
+<nav>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#forms">Forms</a>
+    <a href="#images">Images</a>
+</nav>
+
+<section id="html">
+	<h2>Test Section</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a test paragraph with example text.</p>
+	<p>Example</p>
+	<code>&lt;p&gt;This is a test.&lt;/p&gt;</code>
+</section>
+<section id="css">
+	<h2>Example Section</h2>
+	<p>Lorem ipsum dolor sit amet. This is another test paragraph with sample content.</p>
+	<p>Example2</p>
+	<code>p { color: blue; }</code>
+</section>
+<section id="buttons">
+	<h2>Sample Section</h2>
+	<button>Test Button</button>
+	<p>This is a test description. Lorem ipsum example text here.</p>
+</section>
+
+<section id="forms">
+    <h2>Creating Forms</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<section id="images">
+    <h2>Adding Images</h2>
+    <p>To add an image, use the <code>&lt;img&gt;</code> tag:</p>
+    <code>&lt;img src="image.jpg" alt="Description of image"&gt;</code>
+</section>
+
+</body>
+</html>
