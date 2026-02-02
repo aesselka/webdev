@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+.tagline {
+    font-size: 20px;
+    color: #0d0d0e;
+    align-items: left;
+    
+}
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.right {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.layot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    padding: 30px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    margin-right: 50px;
+    margin-top: 0px;
+    transform: translateY(-50px);
+}
+.divider {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo {
+    font-size: 48px;
+    color: #1877f2;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.link {
+    font-size: 14px;
+    color: #1877f2;
+    text-align: center;
+    margin-bottom: 7px;
+    text-decoration: none;
+    padding-top: 10px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+.link-bold {
+    font-weight: bold;
+}
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #166fe5;
+}
+.bth-sec {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #42b72a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.bth-sec:hover {
+    background-color: #36a420;
+}
+.right-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comm {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #606770;
+}
