@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            let i = 0;
+            while (i < 3) { // shows 0, then 1, then 2
+            alert( i );
+            i++;
+            }
+            let ii = 3;
+            while (ii) alert(ii--);
+
+            let a = 0;
+            do {
+            alert( a );
+            a++;
+            } while (a < 3);
+            for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+                alert(i);
+            }
+
+            let b = 0;
+            for (; b < 3;) {
+                alert( b++ );
+            }
+            //infinite loop
+            for(;;){
+                //repeats without limits
+            }
+
+            outer: for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+            let input = prompt(`Value at coords (${i},${j})`, '');
+            // if an empty string or canceled, then break out of both loops
+            if (!input) break outer; // (*)
+            // do something with the value...
+            }
+            }
+            alert('Done!');
+            //tasks
+            // 1
+            // 1 2 3 4
+            // 1 2 3 4 5
+            // 0 1 2 3 4 
+            
+            for(let i=0;i<11;i++){
+                if(i%2==0){
+                    alert(i);
+                }
+            }
+            let n=0;
+            while(++n<3){
+                alert('number ${n}');
+            }
+
+            let num;
+            do{
+                num=prompt("wrote number greater than 100","");
+            } while(num<=100 && num);
+
+
+            let o= +prompt("enter n:","");
+            outer: for(let i=2;i<=o;i++){
+                for(let j=2;j*j<=o;j++){
+                    if(i%j==0){
+                        continue outer;
+                    }
+                }
+                alert(i);
+            }
+            
+        </script>
+    </body>
+</html>

@@ -46,7 +46,7 @@
     background:var(--border);
     justify-self:center;
     align-items: stretch;
-    height: calc(100% + 120px);
+    height: calc(100% + 22px);
     margin-left: 18px;
   }
   
@@ -54,13 +54,15 @@
     position:relative;
   }
   .ig-logo-left{
-    position:absolute;
-    top: 30px;
-    left:30px;
-    width: 60px;
-    height: 60px;
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
+    z-index: 999;
   }
+  
   
   .promo-center{
     display:flex;

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            alert(1/0);//infinity
+            //BIGINT
+            const bigInt = 1234567890123456789012345678901234567890n;
+            //string
+            let str = "Hello";
+            let str2 = 'Single quotes are ok too';
+            let phrase = `can embed another ${str}`;
+            let name = "John";
+            alert( `Hello, ${name}!` ); // Hello, John
+            // (double quotes do nothing)
+            //boolean
+            let isGreater = 4 > 1;
+            alert( isGreater ); // true (the comparison result is "yes")
+            //undefined
+            let age;
+            alert(age); // shows "undefined"
+
+            typeof Symbol("id") // "symbol"
+            typeof Math // "object"  (1)
+            typeof null // "object"  (2)
+            typeof alert // "function"  (3)
+
+            //tasks
+            //hello 1
+            //hello name
+            //hello ilya
+        </script>
+    </body>
+</html>

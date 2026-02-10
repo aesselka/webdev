@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            let value=true;
+            alert(typeof value); // boolean
+            value = String(value); // now value is a string "true"
+            alert(typeof value); // string
+            alert( "6" / "2" ); // 3, strings are converted to numbers
+            alert( Boolean("hello") ); // true
+            alert( Boolean("") ); // false
+
+            //basic math unary
+            alert( 2 ** 2 ); // 2² = 4
+            alert( 6 - '2' ); // 4, converts '2' to a number
+            alert( '6' / '2' ); // 3, converts both operands to numbers
+            let y = -2;
+            alert( +y ); // -2
+
+            // Converts non-numbers
+            alert( +true ); // 1
+            alert( +"" );   // 0
+            //tasks
+            // c=2,d=2;
+            // a=4,x=5;
+            // 10
+            // -1
+            // 1
+            // 2
+            // 6
+            // 9px
+            // $45
+            // 2
+            // NaN
+            // -9 5
+            // -14
+            // 1
+            // NaN
+            // -2
+        </script>
+    </body>
+</html>

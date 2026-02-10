@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            let userName = 'John';
+            function showMessage() {
+            userName = "Bob"; // (1) changed the outer variable
+            let message = 'Hello, ' + userName;
+            alert(message);
+            }
+            alert( userName ); // John before the function call
+            showMessage();
+            alert( userName ); // Bob, the value was modified by the function
+            
+            function showMessage(from, text = "no text given") {
+            alert( from + ": " + text );
+            }
+            showMessage("Ann"); // Ann: no text given
+
+            function checkAge(age) {
+                if (age >= 18) {
+                    return true;
+                } else {
+                    return confirm('Do you have permission from your parents?');
+                }
+                }
+
+                let age = prompt('How old are you?', 18);
+
+                if ( checkAge(age) ) {
+                alert( 'Access granted' );
+                } else {
+                alert( 'Access denied' );
+                }
+
+                function showPrimes(n) {
+
+                    for (let i = 2; i < n; i++) {
+                    if (!isPrime(i)) continue;
+
+                    alert(i);  // a prime
+                    }
+                    }
+
+                    function isPrime(n) {
+                    for (let i = 2; i < n; i++) {
+                    if ( n % i == 0) return false;
+                    }
+                    return true;
+                    }
+                    //tasks
+                    // no diffirences
+                    function checkAge(age){
+                        return (age>18) ? true : confirm('Did pRENTS ALLOW U?');
+                    }
+                    function minnum(a,b){
+                        return (a>b) ? a : b;
+                    }
+                    function pownum(x,n){
+                        return pow(x,n);
+                    }
+        </script>
+    </body>
+</html>

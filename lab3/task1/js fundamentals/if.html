@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            let year=prompt("your birth year?","");
+            if(year==2026) alert("ure right!");
+            if (year < 2015) {
+                alert( 'Too early...' );
+            } else if (year > 2015) {
+                alert( 'Too late' );
+            } else {
+                alert( 'Exactly!' );
+            }
+            //?-ternary
+            let result= condition ? value1 : value2;
+            let age = prompt('age?', 18);
+
+            let message = (age < 3) ? 'Hi, baby!' :
+            (age < 18) ? 'Hello!' :
+            (age < 100) ? 'Greetings!' :
+            'What an unusual age!';
+
+            alert( message );
+
+            let company = prompt('Which company created JavaScript?', '');
+            (company == 'Netscape') ?
+                alert('Right!') : alert('Wrong.');
+                //task1->yes
+                //task2 
+                let ask=prompt("what is the official","");
+                (ask=="ECMAScript") ? alert("Right") : alert("U dont know? ECMAScript");
+                //task3
+                let r=prompt("write num","");
+                if(r>0){
+                    alert(1);
+                }else if(r<0){
+                    alert(-1);
+                }else alert(0);
+                //task4
+                let res;
+                (a+b<4) ? alert("below") : alert(over);
+                //task5
+                let mes=(login=='Employee') ? ("Hello!") :
+                (login=='Director') ? ("Greetings") :
+                (login=='') ? ("No login"):
+                ('');
+        </script>
+    </body>
+</html>

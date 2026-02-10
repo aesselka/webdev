@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            let user = "John";
+            alert(user ?? "Anonymous"); // John (user is not null/undefined)
+            // || returns the first truthy value.
+            // ?? returns the first defined value.
+            /**
+             * let x = null;
+            let y = 0;
+
+            console.log(x ?? 100);  // 100, потому что x = null
+            console.log(y ?? 100);  // 0, потому что y = 0, не null/undefined
+
+            console.log(x || 100);  // 100, потому что x = null, это ложное значение
+            console.log(y || 100);  // 100, потому что 0 считается ложным значением
+            */
+        </script>
+    </body>
+</html>
