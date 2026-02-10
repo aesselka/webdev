@@ -24,5 +24,5 @@ document.getElementById('todo-form').addEventListener('submit', function(e) {
     });
 
     document.getElementById('task-list').appendChild(taskItem);
-    taskInput.value = '';  // Clear the input field
+    taskInput.value = '';  // clear the unput
 });
