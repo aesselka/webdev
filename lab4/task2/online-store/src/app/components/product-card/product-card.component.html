@@ -50,6 +50,14 @@
       <a [href]="product.link" target="_blank" class="btn btn-primary">Купить</a>
       <a [href]="product.link" target="_blank" class="btn btn-secondary">В рассрочку</a>
 
+      <!-- ── Lab 5: Like button ── -->
+      <button type="button"
+      class="btn btn-fav"
+      (click)="onToggleFavorite($event)"
+      [class.active]="isFavorite">
+        ★
+      </button>
+
       <div class="share-wrapper">
         <button class="btn btn-share" (click)="toggleShareMenu()" title="Поделиться">&#8599;</button>
         <div class="share-menu" *ngIf="showShareMenu">
@@ -57,6 +65,9 @@
           <button class="share-option telegram" (click)="shareTelegram()">✈️ Telegram</button>
         </div>
       </div>
+
+      <!-- ── Lab 5: Delete button ── -->
+      <button class="btn btn-delete" (click)="delete()" title="Удалить">🗑</button>
     </div>
 
   </div>

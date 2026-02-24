@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';
 
@@ -11,10 +11,31 @@ import { Product } from '../../models/product.model';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
+  @Input() favoriteIds: number[] = [];
 
+  @Output() deleteProduct = new EventEmitter<number>();
+  @Output() favoriteToggled = new EventEmitter<number>();
+
+  get isFavorite(): boolean {
+    return this.favoriteIds.includes(this.product.id);
+  }
+  onToggleFavorite(e?: Event): void {
+    e?.stopPropagation();
+    e?.preventDefault();
+    this.favoriteToggled.emit(this.product.id);
+  }
+  like(): void {
+    this.product.likes++;
+  }
   activeImageIndex: number = 0;
   showGallery: boolean = false;
   showShareMenu: boolean = false;
+
+  delete(): void {
+    if (confirm(`Удалить "${this.product.name}"?`)) {
+      this.deleteProduct.emit(this.product.id);
+    }
+  }
 
   getStars(rating: number): number[] {
     return Array(5).fill(0).map((_, i) => i);

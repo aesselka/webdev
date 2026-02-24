@@ -1,6 +1,6 @@
 <div class="page-wrapper">
 
-  <!-- ── TOP HEADER ── -->
+  <!-- ── топчик ── -->
   <header class="top-header">
     <div class="top-header-inner">
       <a href="https://kaspi.kz" target="_blank" class="logo">
@@ -18,7 +18,6 @@
   <div class="search-bar-row">
     <div class="search-bar-inner">
       <div class="search-tab">Магазин</div>
-
       <div class="search-box">
         <label for="search" class="visually-hidden">Search products</label>
         <input
@@ -35,7 +34,6 @@
           </svg>
         </button>
       </div>
-
       <div class="city-block">
         <span class="city-label">Мой город:</span>
         <a href="#" class="city-link">Алматы</a>
@@ -43,86 +41,86 @@
     </div>
   </div>
 
-  <!-- ── CATEGORY NAV ── -->
-  <nav class="cat-nav">
-    <div class="cat-nav-inner">
-      <button
-        *ngFor="let cat of categories"
-        class="cat-nav-btn"
-        [class.active]="activeCategory === cat.key"
-        (click)="setCategory(cat.key)"
-      >{{ cat.label }}</button>
-    </div>
-  </nav>
-
-  <!-- ── MAIN CONTENT ── -->
+  
   <div class="main-content">
 
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-section">
         <div class="sidebar-title-row">
-          <span class="sidebar-title">Все категории</span>
-          
+          <span class="sidebar-title">{{ categoryName }}</span>
         </div>
         <ul class="sidebar-list">
           <li
-            *ngFor="let cat of sidebarCategories"
-            class="sidebar-item"
-            [class.active]="activeCategory === cat.key"
-            (click)="setCategory(cat.key)"
-          >
-            {{ cat.label }}
-            <span class="sidebar-item-count">({{ cat.count }})</span>
-          </li>
+          *ngFor="let cat of sidebarCategories"
+          class="sidebar-item"
+          [class.active]="cat.id === activeCategoryId"
+          (click)="onSelectCategory(cat.id)"
+        >
+          {{ cat.label }}
+          <span class="sidebar-item-count">({{ cat.count }})</span>
+        </li>
         </ul>
       </div>
 
-      <!-- Price Filter -->
+      <!-- Price  -->
       <div class="sidebar-section price-section">
         <div class="sidebar-title-row">
           <span class="sidebar-title">Цена</span>
         </div>
         <div class="price-inputs">
-          <input type="number" [(ngModel)]="minPrice" placeholder="от" class="price-input" />
+          <input type="number" [(ngModel)]="minPrice" (change)="filterProducts()" placeholder="от" class="price-input" />
           <span class="price-dash">—</span>
-          <input type="number" [(ngModel)]="maxPrice" placeholder="до" class="price-input" />
+          <input type="number" [(ngModel)]="maxPrice" (change)="filterProducts()" placeholder="до" class="price-input" />
         </div>
       </div>
 
-      <!-- Rating Filter -->
+      <!-- Rating  -->
       <div class="sidebar-section">
         <div class="sidebar-title-row">
           <span class="sidebar-title">Рейтинг</span>
         </div>
         <div class="rating-filters">
           <label *ngFor="let r of [5,4,3]" class="rating-filter-item">
-            <input type="radio" name="rating" [value]="r" [(ngModel)]="minRating" />
+            <input type="radio" name="rating" [value]="r" [(ngModel)]="minRating" (change)="filterProducts()" />
             <span class="mini-stars">
               <span *ngFor="let s of [1,2,3,4,5]" [class.on]="s <= r">★</span>
             </span>
             <span class="rating-filter-text">и выше</span>
           </label>
           <label class="rating-filter-item">
-            <input type="radio" name="rating" [value]="0" [(ngModel)]="minRating" />
+            <input type="radio" name="rating" [value]="0" [(ngModel)]="minRating" (change)="filterProducts()" />
             <span class="rating-filter-text">Все</span>
           </label>
         </div>
       </div>
+
+      <button class="reset-btn" (click)="resetFilters()">Сбросить фильтры</button>
     </aside>
 
-    <!-- Products Section -->
+  
     <section class="products-section">
 
-      <!-- Breadcrumb + Sort -->
+     <!-- Favorites block (TOP) -->
+      <div class="favorites-section" *ngIf="favorites.length > 0">
+        <div class="favorites-title">★ Favorites ({{ favorites.length }})</div>
+
+        <div class="favorites-grid">
+          <app-product-card
+            *ngFor="let product of favorites"
+            [product]="product"
+            [favoriteIds]="favoriteIds"
+            (favoriteToggled)="favoriteToggled.emit($event)"
+          ></app-product-card>
+        </div>
+      </div>
+      
       <div class="products-top-bar">
         <div class="breadcrumb">
-          <a href="#" class="bc-link">Kaspi Магазин</a>
-          <span class="bc-arrow">→</span>
-          <span class="bc-current">{{ activeCategoryLabel }}</span>
+          <span class="bc-current">{{ categoryName }}</span>
         </div>
         <div class="sort-row">
-          <select [(ngModel)]="sortBy" class="sort-select">
+          <select [(ngModel)]="sortBy" (change)="filterProducts()" class="sort-select">
             <option value="default">Популярные</option>
             <option value="price-asc">Цена: по возрастанию</option>
             <option value="price-desc">Цена: по убыванию</option>
@@ -131,25 +129,36 @@
         </div>
       </div>
 
-      <!-- Results info -->
       <div class="results-info" *ngIf="searchQuery">
         Найдено: <strong>{{ filteredProducts.length }}</strong> по запросу «{{ searchQuery }}»
       </div>
 
-      <!-- Grid -->
+   
+      <!-- доабвтла (deleteProduct)="onDelete($event)" -->
       <div class="products-grid" *ngIf="filteredProducts.length > 0; else noResults">
         <app-product-card
           *ngFor="let product of filteredProducts"
           [product]="product"
+          (deleteProduct)="onDelete($event)"
+          (favoriteToggled)="onFavoriteToggled($event)"
         ></app-product-card>
       </div>
 
-      <!-- Empty state (Task 2 requirement) -->
+      <div class="products-grid" *ngIf="othersFiltered.length > 0; else noResults">
+        <app-product-card
+          *ngFor="let product of othersFiltered"
+          [product]="product"
+          [favoriteIds]="favoriteIds"
+          (favoriteToggled)="onFavoriteToggled($event)"
+          (deleteProduct)="onDelete($event)"
+        ></app-product-card>
+      </div>
+
       <ng-template #noResults>
         <div class="no-results">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWsSzat-NO-bDdKdXGYJe1hED-wOK1U_UAg&s" alt="loop">
-          <p>No products found</p>
-          <button (click)="resetFilters()">Сбросить фильтры</button>
+          <p>Товары не найдены</p>
+          <button class="reset-btn" (click)="resetFilters()">Сбросить фильтры</button>
         </div>
       </ng-template>
 
