@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div class="navbar-inner">
+    <a routerLink="/home" class="logo"><img src="https://i.pinimg.com/1200x/0c/6a/87/0c6a873d7c2902a07dfd6433c048d730.jpg" alt="logo">AlbumBrowser</a>
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="/albums" routerLinkActive="active">Albums</a>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+  <router-outlet />
+</main>

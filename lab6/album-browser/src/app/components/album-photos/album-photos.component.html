@@ -1,0 +1,23 @@
+<div class="photos-page">
+  <div class="page-top">
+    <button class="btn-back" (click)="goBack()">← Back to Album</button>
+    <h1>Album {{ albumId }} — Photos</h1>
+    <span class="count" *ngIf="!loading">{{ photos.length }} photos</span>
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Loading photos…</p>
+  </div>
+
+  <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+  <div class="photo-grid" *ngIf="!loading && !error">
+    <div class="photo-item" *ngFor="let photo of photos">
+      <img [src]="'https://picsum.photos/seed/' + photo.id + '/150/150'" [alt]="photo.title" loading="lazy" />
+      <div class="photo-overlay">
+        <p>{{ photo.id }}</p>
+      </div>
+    </div>
+  </div>
+</div>
